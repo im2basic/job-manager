@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_dashboard.css') }}">
+    <title>The Wishing App</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1><b>Hello {{session.users.first_name}}! </b></h1>
+        <div class="header">
+
+                <form action="/logout" method="POST">
+                    <button type="submit" class="btn btn-secondary">Logout</button>
+                    <input type="hidden" name="logout" value="logout">
+                </form>
+            <form action="/add/job" methods="GET">
+                <button name="button" type="submit" class="btn btn-dark">New job</button>
+            </form>
+        </div>
+        <div class="list1">
+            <h6>Everyones Job:</h6>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Job</th>
+                        <th scope="col">Location</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for job in job%}
+                    {% if job != 1 %}
+                    <tr>
+                        <td>{{job.job}} </td>
+                        <td>{{job.location}}</td>
+                        <td>
+                            <a href="/view/{{job.id}}"> View </a> |
+                            <a href="/{{job.id}}/remove">Remove</a> |
+                            <a href="/jobs/{{job.id}}/edit/"> Edit</a> |
+                            <a href="/added/{{job.id}}"> Add</a>
+                        </td>
+
+                    </tr>
+                    {% endif %}
+                    {% endfor %}
+            </table>
+            </table>
+        </div>
+
+        <div class="list2 ">
+            <h6>{{session.users.first_name}}'s' job:</h6>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Jobs</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for job1 in job1 %}
+                    {% if job1 != 0 %}
+                    <tr>
+                        <td>{{job1.job}}</td>
+                        <td><a href="/view/{{job1.id}}"> View </a> |
+                            <a href="/{{job1.id}}/remove">Done</a> |
+                            <a href="/giveup/{{job1.id}}"> Give Up</a></td>
+                    </tr>
+                    {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+            </table>
+        </div>
+
+
+
+
+
+
+    </div>
+
+
+</body>
+
+</html>

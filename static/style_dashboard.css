@@ -1,0 +1,28 @@
+*{
+    vertical-align: top;
+    margin: 0px auto;
+}
+body{
+    height: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-repeat:no-repeat;
+    background: #70bg32;
+    background-image: linear-gradient( 135deg, #EE9AE5 10%, #5961F9 100%);
+}
+
+.container .logout{
+    display: inline-block;
+}
+button{
+
+    display: inline-block;
+}
+h1{
+    display: inline-block;
+}
+.container .header button{
+    display: inline-block; 
+}

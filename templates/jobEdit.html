@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_edit.css') }}">
+    <title>Document</title>
+</head>
+
+<body>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <p>{{message}}</p>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <h1>Hello {{session.users.first_name}}! Lets Edit Your Job!</h1>
+    <form action="/jobs/{{job.id}}/edit/process" method="POST">
+        <b>Title:</b><input type="text" name="job" value="{{job.job}}">
+        <b>description:</b><input type="text" name="description" value="{{job.description}}">
+        <b>Location:</b><input type="text" name="location" value="{{job.location}}"><br>
+        <button type="butmit" class="btn btn-info">Update</button>
+    </form><br>
+    <form action="/dashboard">
+        <button type="submit" class="btn btn-info">Cancel</button>
+    </form>
+</body>
+
+</html>

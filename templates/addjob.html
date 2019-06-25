@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>The Wishing App</title>
+</head>
+
+<body>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <p>{{message}}</p>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <h1>Hello {{session.users.first_name}}! Create a job! </h1>
+    <form action="/logout" method="POST">
+        <button type="submit" class="btn btn-secondary">Logout</button>
+        <input type="hidden" name="logout" value="logout">
+    </form>
+    <div class="row">
+        <div class="col">
+            <form action="/dashboard">
+                <button type="submit" class="btn btn-dark">Cancel</button>
+            </form>
+
+            <form action="/add/job/process" method='POST'>
+                <p><b>Title:</b></p>
+                <input name="job" type="text" class="form-control" placeholder="Title">
+                <p><b>Description:</b></p>
+                <input name="description" type="text" class="form-control" placeholder="Description">
+                <p><b>Location:</b></p>
+                <input name="location" type="text" class="form-control" placeholder="Location">
+                <p><b>description:</b></p>
+                <input type="radio" name="category" value="cleaning"> cleaning<br>
+                <input type="radio" name="category" value="electrical"> electrical<br>
+                <input type="radio" name="category" value="other"> Other<br><br>
+                <button type="submit" class="btn btn-dark">submit</button>
+            </form>
+        </div>
+    </div>
+    </form>
+</body>
+
+</html>

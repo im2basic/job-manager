@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_login.css') }}">
+
+    <title>The Wishing App</title>
+</head>
+
+<body>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <p>{{message}}</p>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <h1>Welcome! Sign in to manage your jobs!</h1>
+    <h6><b>Register</b></h6>
+    <h6><b>Login</b></h6>
+    <div class="container">
+        <div class="register">
+            <form action="/register" method="POST">
+                <b>First name:</b> <br><br><input type="text" name="fname"><br><br>
+                <b>Last name:</b> <br><br><input type="text" name="lname"><br><br>
+                <b>Email:</b> <br><br><input type="text" name="email"><br><br>
+                <b>Password:</b> <br><br><input type="password" name="passCon"><br><br>
+                <b>Confirm password:</b><br><br> <input type="password" name="passCon2"><br><br>
+                <button type="submit" class="btn btn-info">Register</button>
+            </form>
+        </div>
+        <div class="login">
+            <form action="/login" method="POST">
+                <h3>Login Here!</h3>
+                <b>Email:</b> <br><br><input type="text" name="email"><br><br>
+                <b>Password:</b> <br><br><input type="password" name="passCon"><br><br>
+                <button type="submit" class="btn btn-info">Login</button>
+            </form>
+        </div>
+
+    </div>
+    <!--container end-->
+
+</body>
+
+</html>

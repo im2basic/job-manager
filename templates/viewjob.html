@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_view.css') }}">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Hello {{session.users.first_name}}! These Are The Job Details!</h1>
+    <form action="/dashboard">
+        <button type="submit" class="btn btn-info">cancel</button>
+    </form><br>
+    <form action="/logout" method="POST">
+        <button type="submit" class="btn btn-info">logout</button>
+        <input type="hidden" name="logout" value="logout">
+    </form><br>
+    <table class="table">
+
+        <b>
+            <h5>{{job.job}}</h5>
+            <p>{{job.description}}</p>
+            <p>Location: {{job.location}}</p>
+            <p>Posted on: {{job.created_at}}</p>
+            <p>category: {{job.category}}</p>
+        </b>
+    </table>
+    <a href="/added/{{job.id}}"> Add to my jobs</a> |
+    <a href="/giveup/{{job.id}}"> Give up</a>
+
+</body>
+
+</html>

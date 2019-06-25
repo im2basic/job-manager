@@ -1,0 +1,40 @@
+*{
+    margin: 0pc auto;
+    vertical-align: top;
+}
+body{
+    height: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-repeat:no-repeat;
+    background: #70bg32;
+    background-image: linear-gradient( 135deg, #EE9AE5 10%, #5961F9 100%);
+}
+h1{
+    text-align: center;
+}
+/* h6 .reg{
+    margin-left: 50%;
+    display: inline-block;
+} */
+h6{
+    margin-left: 26%;
+    display: inline-block;
+}
+.container h6{
+    margin-left: 26%;
+}
+.register{
+display: inline-block;
+border: 2px solid black;
+padding: 30px;
+margin-left: 18%;
+}
+.login{
+display: inline-block;
+border: 2px solid black;
+padding: 20px;
+margin-left: 15.4%;
+}
